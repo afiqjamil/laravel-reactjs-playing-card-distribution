@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+
 class HomeController extends Controller
 {
     public function index()
@@ -11,6 +13,20 @@ class HomeController extends Controller
 
     public function distribute()
     {
+        // validation
+        $validator = Validator::make(request()->only('player'), [
+            'player' => 'required|integer|min:1',
+        ], [], [
+            'player' => 'number of player'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'result' => $validator->messages()
+            ]);
+        }
+
         $number_of_player = request('player');
         $players = range(1, $number_of_player);
 

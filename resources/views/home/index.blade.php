@@ -75,6 +75,9 @@
                         });
                         $('#result').append(trHTML);
                     }
+                    else {
+                        alert("Irregularity occurred: " + response.result.player);
+                    }
                 }
             });
         });
