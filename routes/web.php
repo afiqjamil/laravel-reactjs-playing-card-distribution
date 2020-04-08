@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', 'HomeController@index');
-Route::get('distribute', 'HomeController@distribute')->name('distribute');
+// Route::get('/', 'HomeController@index');
+Route::post('distribute', 'HomeController@distribute')->name('distribute');
